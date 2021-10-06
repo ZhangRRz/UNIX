@@ -1,0 +1,30 @@
+#!/usr/bin/tcsh
+#set echo
+set cutfl = "c1-4 --complement"
+if ( $1 == w && -e ./w ) then
+    echo You must type a 3 digit combination code to enter this room.
+    echo -n "Enter it here: "
+    set input = $<
+    # cat savedgame | tr 'a-z' 'n-za-m' > savedgameAftertr ; fgrep -f "combination" ./savedgameAftertr
+    if ( $input == 418 ) then
+        chmod 770 ./w
+        cd w
+        if ( !(-e ~/_/i/i/lamp) ) then
+            grep ~/PA3/expl*Walkthrough.txt -elikely|cut -$cutfl|tee de*
+	        exit 1
+        endif
+    else
+      echo Sorry, that combination is incorrect.&& exit 0
+    endif
+#check if bad link and user wanna backtracking
+else if ( (-l ./`pwd | xargs basename | tr 'ewnsud' 'wesndu'`) && ($1 == `pwd | xargs basename | tr 'ewnsud' 'wesndu'`) ) then
+    echo You cannot go that way. && exit 0
+#check if wanna backtracking
+else
+    echo `pwd | xargs basename | tr 'ewnsud' 'wesndu'`| grep -vw $1 >& ~/X && echo You cannot go that way. && exit 0
+    cd ..
+endif
+
+head -n `ls [19]` de* && mv 9 1 >&~/X
+grep -hw `ls -d * | paste ~/_/es -` -h ~/_/T*|cut -d\; -f1
+exit 3
