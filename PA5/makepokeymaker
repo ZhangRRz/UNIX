@@ -1,0 +1,34 @@
+#!/usr/bin/sed -f
+
+1 imkdir pokey pokey/rooms pokey/usr pokey/usr/toukmond
+1 icd pokey/usr/toukmond
+1 iseq 2306>cd
+1 iseq 2306>ftp
+1 iseq 2306>pwd
+1 iseq 2306>rlogin
+1 iseq 2306>ssh
+1 iseq 2306>uncompress
+1 iseq 2306>cat
+1 iseq 2306>ls
+1 iseq 2306>echo
+1 icd ~/_/
+
+/filenamesdir\/description/ {N;$!N;${achmod -R 755 pokey/*
+};d;}
+
+/description/ {s//&/;s/description//;s/=//g;s/<//g;s/>//g;s/ //g;h;d;}
+
+
+y/ABCDEFGHIJKLMNOPQRSTUVWXYZ\/ /abcdefghijklmnopqrstuvwxyz--/;G;
+
+
+$!N;s=\n.=@.=g;s=\n==g;
+
+icp ~/_/i/i/key pokey/usr/toukmond/
+
+/\(.*\)@\(.*\)/  {h;s==mkdir pokey/rooms/\1; cp \2description pokey/rooms/\1;cp \2*[arokvw][maxslept]*[a-z] pokey/rooms/\1 2> /dev/null =;p;}
+
+g;/\(.*\)@\(.*\)/ {h;s==touch -r \21 pokey/rooms/\1=;}
+
+${achmod -R 755 pokey/*
+}
